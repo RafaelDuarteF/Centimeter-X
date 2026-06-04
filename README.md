@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="centimeter-x-app/assets/logo.png" alt="Centimeter-X" width="300" />
+  <img src="assets/logo.png" alt="Centimeter-X" width="300" />
 
   <h1>Centimeter-X</h1>
 
@@ -45,11 +45,11 @@ agricultura de precisão).
 
 ## ✨ Funcionalidades
 
-- 🔐 **Autenticação JWT** — login e cadastro com validação, *access token* + *refresh token*
+- 🔐 **Autenticação JWT** — login e cadastro com validação, _access token_ + _refresh token_
   rotacionável, logout que revoga a sessão no servidor.
 - 📊 **Dashboard** — resumo da operação (rovers ativos, estações online, última precisão).
-- 🚜 **Gestão de rovers** — CRUD completo, busca e *pull-to-refresh*.
-- 🗺️ **Mapa de posicionamento** — rover ↔ estação-base com a *baseline* (km), via OpenStreetMap.
+- 🚜 **Gestão de rovers** — CRUD completo, busca e _pull-to-refresh_.
+- 🗺️ **Mapa de posicionamento** — rover ↔ estação-base com a _baseline_ (km), via OpenStreetMap.
 - 📡 **Sessão de correção** — inicia o serviço e exibe a precisão atingida (FIX/FLOAT/SINGLE),
   satélites usados, constelação e fonte da correção.
 - 📷 **Ocorrências de campo** — registro georreferenciado com **GPS + câmera**.
@@ -65,11 +65,11 @@ Registrar ocorrência (GPS + foto) → Histórico`.
 
 ## 🧩 Recursos mobile nativos
 
-| Recurso | Biblioteca | Uso |
-|---|---|---|
-| **GPS / Localização** | `expo-location` | Georreferencia ocorrências e a posição do rover; trata permissão negada |
-| **Câmera** | `expo-image-picker` | Anexa evidência visual (foto) à ocorrência |
-| **Mapa** | `react-native-webview` + Leaflet + OpenStreetMap | Visualiza rover ↔ estação-base sem depender de chave do Google Maps |
+| Recurso               | Biblioteca                                       | Uso                                                                     |
+| --------------------- | ------------------------------------------------ | ----------------------------------------------------------------------- |
+| **GPS / Localização** | `expo-location`                                  | Georreferencia ocorrências e a posição do rover; trata permissão negada |
+| **Câmera**            | `expo-image-picker`                              | Anexa evidência visual (foto) à ocorrência                              |
+| **Mapa**              | `react-native-webview` + Leaflet + OpenStreetMap | Visualiza rover ↔ estação-base sem depender de chave do Google Maps     |
 
 ### Descrição do recurso mobile utilizado
 
@@ -88,7 +88,7 @@ Esses recursos refletem o uso real por **operadores de máquinas agrícolas e to
 campo. O app trata explicitamente a **permissão negada** de GPS e câmera, exibindo mensagem
 clara e orientando o usuário a habilitar o acesso nas configurações. Há ainda um **mapa**
 (Leaflet + OpenStreetMap) que torna visível a relação espacial **rover ↔ estação-base** e a
-*baseline* entre eles.
+_baseline_ entre eles.
 
 ## 🏛️ Arquitetura
 
@@ -105,8 +105,8 @@ clara e orientando o usuário a habilitar o acesso nas configurações. Há aind
 ```
 
 A "precisão em centímetros" usa **dados reais e abertos da NASA**, não simulação: o backend
-compara a órbita/relógio *broadcast* com os produtos *precisos* (SP3/CLK do IGS) para derivar
-a correção e a acurácia por sessão (PPP — *Precise Point Positioning*).
+compara a órbita/relógio _broadcast_ com os produtos _precisos_ (SP3/CLK do IGS) para derivar
+a correção e a acurácia por sessão (PPP — _Precise Point Positioning_).
 
 > O backend é mantido em um repositório separado. Este repositório contém o **app mobile** e
 > o contrato que ele consome.
@@ -114,14 +114,16 @@ a correção e a acurácia por sessão (PPP — *Precise Point Positioning*).
 ## 🧱 Stack
 
 **Mobile**
+
 - React Native + **Expo** (SDK 56), **TypeScript**
 - **React Navigation** (stack + bottom tabs)
-- **Axios** com interceptors (JWT, *refresh* automático, normalização de erros)
+- **Axios** com interceptors (JWT, _refresh_ automático, normalização de erros)
 - **expo-secure-store** (tokens), **AsyncStorage** (cache), **expo-location**,
   **expo-image-picker**, **react-native-webview** (mapa), **expo-file-system**
 - **expo-linear-gradient** + **@expo/vector-icons** (UI)
 
 **Backend** (repositório separado)
+
 - Spring Boot 3 (Web, Security, Data JPA, Validation, Scheduling, Actuator)
 - JWT (access + refresh), BCrypt, rate limiting, PostgreSQL (+ PostGIS) / H2, Flyway
 - Cliente para CDDIS/IGS + parser RINEX/SP3 · `springdoc-openapi` (Swagger)
@@ -131,19 +133,19 @@ a correção e a acurácia por sessão (PPP — *Precise Point Positioning*).
 Base: `/<host>/api/v1` · `application/json` (exceto upload de foto: `multipart/form-data`) ·
 `Authorization: Bearer <token>` (exceto `/auth/*`) · datas em ISO-8601 UTC.
 
-| Método | Rota | Descrição |
-|---|---|---|
-| `POST` | `/auth/register` | Cria usuário |
-| `POST` | `/auth/login` | Autentica → access + refresh token |
-| `POST` | `/auth/refresh` | Renova o access token |
-| `POST` | `/auth/logout` | Revoga o refresh token |
-| `GET` | `/me` | Usuário logado |
-| `GET·POST·PUT·DELETE` | `/rovers` · `/rovers/{id}` | CRUD de rovers (filtrado por dono) |
-| `GET` | `/base-stations` · `/base-stations/{id}` | Estações-base GNSS |
-| `POST` | `/rovers/{id}/sessions` | Inicia sessão de correção |
-| `GET` | `/sessions` · `/sessions/{id}` | Histórico / status de sessão |
-| `POST·GET` | `/occurrences` | Registra/lista ocorrências (GPS + foto via multipart) |
-| `GET` | `/dashboard` | Resumo da tela inicial |
+| Método                | Rota                                     | Descrição                                             |
+| --------------------- | ---------------------------------------- | ----------------------------------------------------- |
+| `POST`                | `/auth/register`                         | Cria usuário                                          |
+| `POST`                | `/auth/login`                            | Autentica → access + refresh token                    |
+| `POST`                | `/auth/refresh`                          | Renova o access token                                 |
+| `POST`                | `/auth/logout`                           | Revoga o refresh token                                |
+| `GET`                 | `/me`                                    | Usuário logado                                        |
+| `GET·POST·PUT·DELETE` | `/rovers` · `/rovers/{id}`               | CRUD de rovers (filtrado por dono)                    |
+| `GET`                 | `/base-stations` · `/base-stations/{id}` | Estações-base GNSS                                    |
+| `POST`                | `/rovers/{id}/sessions`                  | Inicia sessão de correção                             |
+| `GET`                 | `/sessions` · `/sessions/{id}`           | Histórico / status de sessão                          |
+| `POST·GET`            | `/occurrences`                           | Registra/lista ocorrências (GPS + foto via multipart) |
+| `GET`                 | `/dashboard`                             | Resumo da tela inicial                                |
 
 Listagens são paginadas e envelopadas (`{ content, page, size, totalElements, totalPages }`).
 Erros seguem o formato `{ timestamp, status, error, message, path, fieldErrors }`.
@@ -156,8 +158,8 @@ Erros seguem o formato `{ timestamp, status, error, message, path, fieldErrors }
   outro usuário retorna `404`.
 - **Tokens no dispositivo** guardados no `expo-secure-store` (Keychain / Keystore).
 - **Rate limiting** em `/auth/*`, **política de senha** (mín. 8 caracteres, BCrypt).
-- **Upload** de foto: `multipart`, máx. 5 MB, validação por *magic bytes*.
-- **Validação de entrada** (Bean Validation) e respostas de erro sem *stack trace*.
+- **Upload** de foto: `multipart`, máx. 5 MB, validação por _magic bytes_.
+- **Validação de entrada** (Bean Validation) e respostas de erro sem _stack trace_.
 
 ## 📂 Estrutura
 
@@ -205,14 +207,14 @@ em **dispositivo físico**, o IP da máquina na rede local (ex.: `http://192.168
 
 ## ✅ Cobertura dos requisitos
 
-| Critério | Onde |
-|---|---|
-| Interface mobile | Telas organizadas + componentes reutilizáveis (`src/screens`, `src/components`) |
-| Navegação e fluxo | Login → rovers → detalhe → sessão → ocorrência → histórico (`src/navigation`) |
-| Manipulação de dados | Serviços REST + estado + SecureStore/AsyncStorage; dados reais NASA/IGS no backend |
-| Recursos mobile | GPS + câmera (`src/hooks`) e mapa (`PositioningMap`) |
-| Tratamento de erros/validações | Validação de formulários, permissão negada, falha de rede, 404 |
-| Organização do projeto | Arquitetura em camadas, TypeScript, este README |
+| Critério                       | Onde                                                                               |
+| ------------------------------ | ---------------------------------------------------------------------------------- |
+| Interface mobile               | Telas organizadas + componentes reutilizáveis (`src/screens`, `src/components`)    |
+| Navegação e fluxo              | Login → rovers → detalhe → sessão → ocorrência → histórico (`src/navigation`)      |
+| Manipulação de dados           | Serviços REST + estado + SecureStore/AsyncStorage; dados reais NASA/IGS no backend |
+| Recursos mobile                | GPS + câmera (`src/hooks`) e mapa (`PositioningMap`)                               |
+| Tratamento de erros/validações | Validação de formulários, permissão negada, falha de rede, 404                     |
+| Organização do projeto         | Arquitetura em camadas, TypeScript, este README                                    |
 
 ## 📄 Licença
 
