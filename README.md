@@ -14,6 +14,14 @@
   </p>
 
   <p><em>Global Solution FIAP — edição Space Connect</em></p>
+
+  <p>
+    Rafael Duarte de Freitas · RM558644<br/>
+    Rafael Gaspar Bragança Martins · RM557228<br/>
+    Luiz Gustavo da Silva · RM558358<br/>
+    Pedro Almeida e Camacho · RM556831<br/>
+    Renan Dias Utida · RM558540
+  </p>
 </div>
 
 ---

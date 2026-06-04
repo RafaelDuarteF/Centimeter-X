@@ -62,8 +62,14 @@ export function SessionStatusScreen({ route, navigation }: Props) {
         <View style={styles.heroWrap}>
           <LinearGradient colors={gradients.precision} style={[styles.ring, shadow.glow]}>
             <View style={styles.ringInner}>
-              <Text style={styles.ringValue}>{session.horizontalAccuracyCm.toFixed(1)}</Text>
-              <Text style={styles.ringUnit}>cm horizontal</Text>
+              <Text style={styles.ringValue} adjustsFontSizeToFit numberOfLines={1}>
+                {session.horizontalAccuracyCm >= 100
+                  ? (session.horizontalAccuracyCm / 100).toFixed(1)
+                  : session.horizontalAccuracyCm.toFixed(1)}
+              </Text>
+              <Text style={styles.ringUnit}>
+                {session.horizontalAccuracyCm >= 100 ? 'm horizontal' : 'cm horizontal'}
+              </Text>
             </View>
           </LinearGradient>
           <Badge label={fixStatusLabel[session.fixStatus]} color={fixStatusColor[session.fixStatus]} dot />
@@ -114,7 +120,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  ringValue: { color: colors.accent, fontSize: 52, fontWeight: '800', letterSpacing: -1 },
+  ringValue: { color: colors.accent, fontSize: 44, fontWeight: '800', letterSpacing: -1, width: '80%', textAlign: 'center', minHeight: 52 },
   ringUnit: { color: colors.textMuted, fontSize: fontSize.sm, marginTop: 2 },
   block: { marginBottom: spacing.md },
   row: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: spacing.xs },

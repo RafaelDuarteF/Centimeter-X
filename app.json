@@ -4,7 +4,7 @@
     "slug": "centimeter-x-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo mini.png",
+    "icon": "./assets/logo-mini.png",
     "scheme": "centimeterx",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
@@ -18,14 +18,19 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#0A1730",
-        "foregroundImage": "./assets/logo mini.png"
+        "foregroundImage": "./assets/logo-mini.png"
       },
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
-        "CAMERA"
+        "CAMERA",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
       ],
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.rafaelddf.centimeterxapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -52,7 +57,9 @@
           "cameraPermission": "O Centimeter-X usa a câmera para anexar evidências visuais às ocorrências."
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-asset",
+      "expo-font"
     ],
     "extra": {
       "apiBaseUrl": "http://10.0.2.2:8080/api/v1"

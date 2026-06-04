@@ -76,5 +76,6 @@ export function formatDateTime(iso?: string): string {
 
 export function formatAccuracy(cm?: number): string {
   if (cm == null) return '—';
+  if (cm >= 100) return `${(cm / 100).toFixed(1)} m`;
   return `${cm.toFixed(1)} cm`;
 }

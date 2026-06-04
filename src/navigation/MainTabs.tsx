@@ -19,7 +19,7 @@ const ICONS: Record<keyof MainTabParamList, keyof typeof Ionicons.glyphMap> = {
 function HeaderBrand() {
   return (
     <View style={styles.brandWrap}>
-      <Image source={require('../../assets/logo mini.png')} style={styles.brandLogo} resizeMode="contain" />
+      <Image source={require('../../assets/logo-mini.png')} style={styles.brandLogo} resizeMode="contain" />
     </View>
   );
 }

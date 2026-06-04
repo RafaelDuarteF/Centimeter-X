@@ -1,4 +1,4 @@
-import { File, Paths } from 'expo-file-system';
+import * as FileSystem from 'expo-file-system';
 import { api } from './api';
 import type { Id, Occurrence, OccurrenceType, Page } from '../types/models';
 
@@ -19,9 +19,9 @@ export const occurrenceService = {
     // Native envia partes-string como text/plain (sem content-type), o que a API
     // rejeita com 415. Por isso gravamos o JSON num arquivo temporário e o anexamos
     // como parte de arquivo com type "application/json".
-    const dataFile = new File(Paths.cache, `occurrence-data-${Date.now()}.json`);
-    dataFile.create({ overwrite: true });
-    dataFile.write(
+    const dataFilePath = `${FileSystem.cacheDirectory}occurrence-data-${Date.now()}.json`;
+    await FileSystem.writeAsStringAsync(
+      dataFilePath,
       JSON.stringify({
         roverId: input.roverId,
         type: input.type,
@@ -29,9 +29,10 @@ export const occurrenceService = {
         latitude: input.latitude,
         longitude: input.longitude,
       }),
+      { encoding: FileSystem.EncodingType.UTF8 },
     );
     form.append('data', {
-      uri: dataFile.uri,
+      uri: dataFilePath,
       name: 'data.json',
       type: 'application/json',
     } as unknown as Blob);
