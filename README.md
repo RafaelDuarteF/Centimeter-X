@@ -203,7 +203,7 @@ npx expo start
 
 ### Modo de teste (sem backend)
 
-Com a flag `USE_MOCK = true` em [`src/config/env.ts`](centimeter-x-app/src/config/env.ts), o
+Com a flag `USE_MOCK = true` em [`src/config/env.ts`](src/config/env.ts), o
 app roda com **dados simulados em memória**. Na tela de login, toque no box **"Modo de
 teste"** para preencher as credenciais de demonstração.
 
