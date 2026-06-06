@@ -231,4 +231,4 @@ Conta seed do backend:
 
 ## 📄 Licença
 
-Distribuído sob a licença **MIT**. Veja [`centimeter-x-app/LICENSE`](centimeter-x-app/LICENSE).
+Distribuído sob a licença **MIT**. Veja [`LICENSE`](LICENSE).
