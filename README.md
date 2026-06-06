@@ -209,9 +209,14 @@ teste"** para preencher as credenciais de demonstração.
 
 ### Apontando para o backend real
 
-Defina `USE_MOCK = false` e ajuste `extra.apiBaseUrl` em
-[`app.json`](centimeter-x-app/app.json). Em **emulador Android**, use `http://10.0.2.2:8080/api/v1`;
-em **dispositivo físico**, o IP da máquina na rede local (ex.: `http://192.168.0.10:8080/api/v1`).
+Defina `USE_MOCK = false`, no env.ts (já está assim), a URL da API no ar já está no app.json e no env.ts, então basta rodar o projeto.
+
+Conta seed do backend:
+
+| Campo  | Valor                      |
+| ------ | -------------------------- |
+| E-mail | `operador@centimeterx.com` |
+| Senha  | `Centimeter@2026`          |
 
 ## ✅ Cobertura dos requisitos
 

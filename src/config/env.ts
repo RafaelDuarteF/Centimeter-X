@@ -5,7 +5,8 @@ const fromExtra = (
 )?.apiBaseUrl;
 
 // Em dispositivo físico, troque para o IP da máquina na rede local (ex.: http://192.168.0.10:8080/api/v1).
-export const API_BASE_URL = fromExtra ?? "http://localhost:8080/api/v1";
+export const API_BASE_URL =
+  fromExtra ?? "https://centimeter-x-api.azurewebsites.net/api/v1";
 
 export const REQUEST_TIMEOUT_MS = 15000;
 
@@ -25,3 +26,4 @@ export const MOCK_CREDENTIALS = {
   email: "teste@centimeter.com",
   password: "teste1234",
 };
+
