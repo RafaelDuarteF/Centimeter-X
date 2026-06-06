@@ -123,7 +123,7 @@ a correção e a acurácia por sessão (PPP — _Precise Point Positioning_).
 
 **Mobile**
 
-- React Native + **Expo** (SDK 56), **TypeScript**
+- React Native + **Expo** (SDK 52.0.0), **TypeScript**
 - **React Navigation** (stack + bottom tabs)
 - **Axios** com interceptors (JWT, _refresh_ automático, normalização de erros)
 - **expo-secure-store** (tokens), **AsyncStorage** (cache), **expo-location**,
